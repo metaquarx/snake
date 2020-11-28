@@ -15,15 +15,33 @@
 //  You should have received a copy of the GNU General Public License
 //  along with Snake.  If not, see <https://www.gnu.org/licenses/>.
 
-#include "main.hpp"
+#ifndef snake_game_hpp
+#define snake_game_hpp
 
-#include "game.hpp"
+#include <SFML/Graphics.hpp>
 
-int main() {
-	game snake_game;
+#include "snake.hpp"
 
-	while (snake_game.run()) {
-	}
+class game {
+public:
+	game();
 
-	return snake_game.end();
-}
+	bool run();
+
+	int end();
+
+private:
+	unsigned width;
+	unsigned height;
+
+	sf::RenderWindow wnd;
+
+	unsigned scale;
+	snake s;
+
+	sf::Vector2f food;
+
+	void reset_food();
+};
+
+#endif	// snake_game_hpp

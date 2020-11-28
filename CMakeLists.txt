@@ -1,11 +1,13 @@
 ### Setup project ##############################################################
 
 cmake_minimum_required(VERSION 3.8 FATAL_ERROR)
-project(SnakeGame VERSION 1.0 LANGUAGES CXX)
+project(Snake VERSION 1.0 LANGUAGES CXX)
 
 if(${CMAKE_VERSION} VERSION_LESS 3.12)
 	cmake_policy(VERSION ${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION})
 endif()
+
+find_package(SFML 2.5 COMPONENTS system window graphics REQUIRED)
 
 ### Build types ################################################################
 
@@ -22,7 +24,10 @@ endif()
 ### Executable #################################################################
 
 set(SOURCE_FILES
-	main.cpp
+	src/main.cpp
+	src/game.cpp
+	src/snake.cpp
+	src/maths.cpp
 )
 
 add_executable(Snake ${SOURCE_FILES})
@@ -34,3 +39,5 @@ set_target_properties(Snake PROPERTIES
 	CXX_STANDARD 17
 	CXX_EXTENSIONS OFF
 )
+
+target_link_libraries(Snake PRIVATE sfml-graphics)

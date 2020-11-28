@@ -15,15 +15,13 @@
 //  You should have received a copy of the GNU General Public License
 //  along with Snake.  If not, see <https://www.gnu.org/licenses/>.
 
-#include "main.hpp"
+#ifndef snake_maths_hpp
+#define snake_maths_hpp
 
-#include "game.hpp"
+#include <cmath>
 
-int main() {
-	game snake_game;
+float dist(float x1, float y1, float x2, float y2);
 
-	while (snake_game.run()) {
-	}
+float constrain(float val, float min, float max);
 
-	return snake_game.end();
-}
+#endif	// snake_maths_hpp

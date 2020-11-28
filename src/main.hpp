@@ -15,15 +15,9 @@
 //  You should have received a copy of the GNU General Public License
 //  along with Snake.  If not, see <https://www.gnu.org/licenses/>.
 
-#include "main.hpp"
+#ifndef snake_main_hpp
+#define snake_main_hpp
 
-#include "game.hpp"
+int main();
 
-int main() {
-	game snake_game;
-
-	while (snake_game.run()) {
-	}
-
-	return snake_game.end();
-}
+#endif	// snake_main_hpp
