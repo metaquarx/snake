@@ -15,15 +15,22 @@
 //  You should have received a copy of the GNU General Public License
 //  along with Snake.  If not, see <https://www.gnu.org/licenses/>.
 
-#include "main.hpp"
+#include "maths.hpp"
 
-#include "game.hpp"
+float dist(float x1, float y1, float x2, float y2) {
+	auto dx = x1 - x2;
+	auto dy = y1 - y2;
+	return std::sqrt(dx * dx + dy * dy);
+}
 
-int main() {
-	game snake_game;
-
-	while (snake_game.run()) {
+float constrain(float val, float min, float max) {
+	if (val > max) {
+		return max;
 	}
 
-	return snake_game.end();
+	if (val < min) {
+		return min;
+	}
+
+	return val;
 }

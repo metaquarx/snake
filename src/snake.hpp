@@ -15,15 +15,36 @@
 //  You should have received a copy of the GNU General Public License
 //  along with Snake.  If not, see <https://www.gnu.org/licenses/>.
 
-#include "main.hpp"
+#ifndef snake_snake_hpp
+#define snake_snake_hpp
 
-#include "game.hpp"
+#include <vector>
 
-int main() {
-	game snake_game;
+#include <SFML/Graphics.hpp>
 
-	while (snake_game.run()) {
-	}
+class snake : public sf::Drawable {
+public:
+	snake(unsigned scl);
 
-	return snake_game.end();
-}
+	bool eat(sf::Vector2f);
+	void dir(float x, float y);
+	void death();
+	void update(float width, float height);
+
+	virtual void draw(sf::RenderTarget &target,
+					  sf::RenderStates states) const override;
+
+private:
+	float x;
+	float y;
+	float xspeed;
+	float yspeed;
+
+	unsigned scale;
+
+	unsigned total;
+
+	std::vector<sf::Vector2f> tail;
+};
+
+#endif	// snake_snake_hpp
